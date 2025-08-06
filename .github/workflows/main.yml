@@ -1,0 +1,17 @@
+name: Build C App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: |
+          docker build -t mjth/c-app:$GITHUB_SHA .
